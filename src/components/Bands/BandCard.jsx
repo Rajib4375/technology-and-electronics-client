@@ -1,10 +1,13 @@
+/* eslint-disable react/prop-types */
+import { Link } from "react-router-dom";
 
 
 const BandCard = ({band}) => {
 
-  const {image, brand_name} = band || {}
+  const {id, image, brand_name} = band || {}
     return (
-        <div className="card  bg-[#0052FF26] shadow-xl">
+  <Link to={`/bands/${id}`}>
+    <div className="card  bg-[#0052FF26] shadow-xl">
   <figure className="px-5 pt-5">
     <img src={image} alt="" className="rounded-xl bg-white w-[493px] h-[450px]" />
   </figure>
@@ -13,6 +16,7 @@ const BandCard = ({band}) => {
     
   </div>
 </div>
+  </Link>
     );
 };
 

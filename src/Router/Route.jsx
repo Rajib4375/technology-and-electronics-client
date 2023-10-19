@@ -4,12 +4,14 @@ import Home from "../Pages/Home/Home";
 import Addproducts from "../Pages/AddProducts/Addproducts";
 import MyCart from "../Pages/MyCart/MyCart";
 import Login from "../Pages/Login/Login";
+import Errorpage from "../Pages/Errorpage/Errorpage";
 
 
 const myCreatedRoute = createBrowserRouter([
     {
         path:"/",
         element: <MainLayout></MainLayout>,
+        errorElement: <Errorpage></Errorpage>,
          
         children:[
             {
