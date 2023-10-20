@@ -4,14 +4,17 @@ import Home from "../Pages/Home/Home";
 import Addproducts from "../Pages/AddProducts/Addproducts";
 import MyCart from "../Pages/MyCart/MyCart";
 import Login from "../Pages/Login/Login";
-import Errorpage from "../Pages/Errorpage/Errorpage";
+
+import BandProducts from "../Pages/BandProducts/BandProducts";
+import ProductUpdate from "../components/ProductUpdate/ProductUpdate";
+
 
 
 const myCreatedRoute = createBrowserRouter([
     {
         path:"/",
         element: <MainLayout></MainLayout>,
-        errorElement: <Errorpage></Errorpage>,
+        
          
         children:[
             {
@@ -30,7 +33,19 @@ const myCreatedRoute = createBrowserRouter([
             {
                 path: "/login",
                 element:<Login></Login>
+            },
+            {
+                path:"/bands/:brandName",
+                element:<BandProducts></BandProducts>,
+                loader:({params}) =>fetch(`http://localhost:5000/bands/${params.brandName}`)  
+            },
+            {
+                path:'/products/:id',
+                element:<ProductUpdate></ProductUpdate>,
+                loader:({params}) =>fetch(`http://localhost:5000/products/${params.id}`)
+               
             }
+            
         ]
     }
 ])
