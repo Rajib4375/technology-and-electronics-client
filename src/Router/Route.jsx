@@ -11,6 +11,7 @@ import ProductUpdate from "../components/ProductUpdate/ProductUpdate";
 import Register from "../Pages/Register/Register";
 import DtailsProduct from "../Pages/DtailsProduct/DtailsProduct";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../Pages/Errorpage/ErrorPage";
 
 
 
@@ -18,6 +19,7 @@ const myCreatedRoute = createBrowserRouter([
     {
         path:"/",
         element: <MainLayout></MainLayout>,
+        errorElement:<ErrorPage></ErrorPage> ,
         
          
         children:[
