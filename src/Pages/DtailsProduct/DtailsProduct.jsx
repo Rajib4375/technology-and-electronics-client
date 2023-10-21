@@ -6,7 +6,11 @@ const DtailsProduct = () => {
    
     const bandProducts = useLoaderData();
     
-    const {_id, name, category, image, price, description, band_name, reating} = bandProducts;
+    const { name, category, image, price, description, band_name,} = bandProducts;
+
+    const handleAddCart = () =>{
+        console.log(bandProducts)
+    }
     
 
     return (
@@ -20,7 +24,7 @@ const DtailsProduct = () => {
      <p className="text-[#0052FF]">Details: {description}</p>
      <p className="text-[#0052FF]">Price: {price}</p>
      <div className="card-actions justify-end">
-      <button className="btn btn-primary bg-amber-800">Add to Cart</button>
+      <button onClick={handleAddCart} className="btn btn-primary bg-amber-800">Add to Cart</button>
       </div>
      </div>
      </div>
