@@ -86,6 +86,17 @@ const Navbar = () => {
       >
      My Cart
    </NavLink>
+
+   <NavLink
+      to="/register"
+     className={({ isActive, isPending }) =>
+      isPending ? "pending" : isActive ? "text-green-400 underline" : ""
+     }
+      >
+    Register
+   </NavLink>
+
+
    <NavLink
       to="/login"
      className={({ isActive, isPending }) =>
