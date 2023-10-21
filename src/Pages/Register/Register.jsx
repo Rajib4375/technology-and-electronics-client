@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/Authprovider";
 import Swal from "sweetalert2";
@@ -6,7 +6,9 @@ import Swal from "sweetalert2";
 
 const Register = () => {
   
-    const {createUser} = useContext(AuthContext)
+    const {createUser} = useContext(AuthContext);
+
+    const [error, setError] = useState("")
  
     const handleRegister = e =>{
         e.preventDefault();
@@ -40,7 +42,13 @@ const Register = () => {
               })
         } )
 
-
+        // password validation
+        if(!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/.test(password)){
+            setError('Minimum six characters, at least one uppercase letter, one lowercase letter, one number and one special character')
+        }
+        else{
+            setError("")
+        }
     }
 
 
@@ -48,6 +56,7 @@ const Register = () => {
         <div>
             <div>
             <h2 className="text-3xl font-bold my-10 text-center">Plese Register</h2>
+            <p className="text-center text-red-300">{error}</p>
             <form onSubmit={handleRegister} className="card-body md:w-3/4 lg:h-1/2 mx-auto">
         <div className="form-control">
           <label className="label">

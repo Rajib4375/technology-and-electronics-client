@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 
 const ProductCard = ({bandProduct}) => {
@@ -12,6 +13,7 @@ const ProductCard = ({bandProduct}) => {
     <p>Name:{name}</p>
     <p>Name:{name}</p>
     <p>Type:{category}</p>
+    <p>{description.slice(0,60)}</p>
     <p>price :{price}</p>
     <div className="card-actions justify-end">
       <Link to={`/products/${_id}`}><button className="btn  bg-[#D2B48C] text-[#331A15]">Update </button></Link>

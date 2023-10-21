@@ -30,7 +30,7 @@ const Login = () => {
             Swal.fire({
                 position: 'top-end',
                 icon: 'error',
-                title: 'Please try Again',
+                title: 'Try Again ! password and email does not match',
                 showConfirmButton: false,
                 timer: 1500
               })
