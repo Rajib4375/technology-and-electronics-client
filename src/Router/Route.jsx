@@ -7,6 +7,7 @@ import Login from "../Pages/Login/Login";
 
 import BandProducts from "../Pages/BandProducts/BandProducts";
 import ProductUpdate from "../components/ProductUpdate/ProductUpdate";
+import Register from "../Pages/Register/Register";
 
 
 
@@ -33,6 +34,10 @@ const myCreatedRoute = createBrowserRouter([
             {
                 path: "/login",
                 element:<Login></Login>
+            },
+            {
+                path: "/register",
+                element:<Register></Register>
             },
             {
                 path:"/bands/:brandName",

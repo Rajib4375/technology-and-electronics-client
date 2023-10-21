@@ -2,24 +2,44 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/Authprovider";
 
-const Login = () => {
 
-    const {SignIn} = useContext(AuthContext);
-
-    const handleLogin = e =>{
+const Register = () => {
+  
+    const {createUser} = useContext(AuthContext)
+ 
+    const handleRegister = e =>{
         e.preventDefault();
         const form = new FormData(e.currentTarget);
+        const name = form.get('name')
         const email = form.get('email');
         const password = form.get('password');
-        console.log(email, password)
+        console.log(name, email, password);
+
+        // createUser
+
+        createUser(email, password)
+        .then(result =>{
+            console.log(result.user)
+        })
+        .catch(error =>{
+            console.log(error)
+        } )
 
 
     }
 
+
     return (
         <div>
-            <h2 className="text-3xl font-bold my-10 text-center">Plese Login</h2>
-            <form onSubmit={handleLogin} className="card-body md:w-3/4 lg:h-1/2 mx-auto">
+            <div>
+            <h2 className="text-3xl font-bold my-10 text-center">Plese Register</h2>
+            <form onSubmit={handleRegister} className="card-body md:w-3/4 lg:h-1/2 mx-auto">
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Name</span>
+          </label>
+          <input type="text" placeholder="name" name="name" className="input input-bordered" required />
+        </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
@@ -39,9 +59,10 @@ const Login = () => {
           <button className="btn btn-primary">Login</button>
         </div>
       </form>
-      <p className="text-center mt-4">Do not have an account <Link className="text-blue-600 font-bold" to="/register">Register</Link></p>
+      <p className="text-center mt-4">Already have an account <Link className="text-blue-600 font-bold" to="/login">Login</Link></p>
+        </div>
         </div>
     );
 };
 
-export default Login;
+export default Register;
