@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import {  createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
 import Home from "../Pages/Home/Home";
@@ -8,6 +9,8 @@ import Login from "../Pages/Login/Login";
 import BandProducts from "../Pages/BandProducts/BandProducts";
 import ProductUpdate from "../components/ProductUpdate/ProductUpdate";
 import Register from "../Pages/Register/Register";
+import DtailsProduct from "../Pages/DtailsProduct/DtailsProduct";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -25,7 +28,7 @@ const myCreatedRoute = createBrowserRouter([
             },
             {
                 path:"/addProduct",
-                element:<Addproducts></Addproducts>
+                element:<PrivateRoute><Addproducts></Addproducts></PrivateRoute>
             },
             {
                 path:"/myCart",
@@ -49,6 +52,11 @@ const myCreatedRoute = createBrowserRouter([
                 element:<ProductUpdate></ProductUpdate>,
                 loader:({params}) =>fetch(`http://localhost:5000/products/${params.id}`)
                
+            },
+            {
+                path:'/detail/:id',
+                element:<DtailsProduct></DtailsProduct>,
+                loader:({params})=>fetch(`http://localhost:5000/products/${params.id}`)
             }
             
         ]
