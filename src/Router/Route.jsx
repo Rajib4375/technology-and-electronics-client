@@ -34,7 +34,7 @@ const myCreatedRoute = createBrowserRouter([
             },
             {
                 path:"/myCart",
-                element:<MyCart></MyCart>
+                element:<PrivateRoute><MyCart></MyCart></PrivateRoute>
             },
             {
                 path: "/login",

@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 
@@ -9,7 +10,34 @@ const DtailsProduct = () => {
     const { name, category, image, price, description, band_name,} = bandProducts;
 
     const handleAddCart = () =>{
-        console.log(bandProducts)
+ 
+        const addedCartItemArray=[];
+
+        const addToCartitem = JSON.parse(localStorage.getItem('cartItems'))
+        if(!addToCartitem){
+            addedCartItemArray.push(bandProducts)
+            localStorage.setItem('cartItems', JSON.stringify(addedCartItemArray))
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Product Added Successfully',
+                showConfirmButton: false,
+                timer: 1500
+              })
+   
+        }
+        else{
+            addedCartItemArray.push(...addToCartitem,bandProducts)
+            localStorage.setItem('cartItems', JSON.stringify(addedCartItemArray))
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Product Added Successfully',
+                showConfirmButton: false,
+                timer: 1500
+              })
+
+        }
     }
     
 
