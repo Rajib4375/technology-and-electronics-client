@@ -1,8 +1,25 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/Authprovider";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import app from "../../../firebase/firebase.config";
 
 const Navbar = () => {
+
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  const handleGoogleSignIn = () =>{
+    signInWithPopup(auth, provider)
+    .then(result =>{
+      const user = result.user;
+      console.log(user)
+    })
+    .catch(error =>{
+      console.log(error)
+    })
+  }
+
 
   const {user, logOut} = useContext(AuthContext);
  
@@ -108,7 +125,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-
+  <a onClick={handleGoogleSignIn} className="btn mr-2 ">Continue With Google</a>
     {
       user ?
       <a onClick={handleSIgnOut} className="btn">Sign Out</a>

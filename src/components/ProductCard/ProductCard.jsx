@@ -12,7 +12,7 @@ const ProductCard = ({bandProduct}) => {
     return (
       <div>
         <div className="card lg:card-side bg-[#F4F3F0] shadow-xl p-6">
-  <figure><img className="w-[200px] h-[220px]" src={image} alt="Album"/></figure>
+  <figure><img className="lg:w-[200px] lg:h-[220px]" src={image} alt="Album"/></figure>
   <div className="card-body">
     <h2 className="card-title">Band Name:{band_name}</h2>
     <p>Name:{name}</p>
